@@ -8,5 +8,4 @@ RUN mkdir /api
 WORKDIR /api
 RUN pip3 install flask
 
-COPY app.py /api/
 ENTRYPOINT FLASK_APP=/api/app.py flask run --host=0.0.0.0 --port=8000
