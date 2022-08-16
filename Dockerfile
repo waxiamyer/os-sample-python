@@ -5,9 +5,8 @@ RUN pip3 install --upgrade --user pip
 
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /api
-RUN mkdir /flask
 WORKDIR /api
 RUN pip3 install flask
 
-COPY app.py /flask/
-ENTRYPOINT FLASK_APP=/flask/app.py flask run --host=0.0.0.0 --port=8000
+COPY app.py /api/
+ENTRYPOINT FLASK_APP=/api/app.py flask run --host=0.0.0.0 --port=8000
