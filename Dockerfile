@@ -1,16 +1,6 @@
-FROM python:3
+FROM ubuntu:16.04
 
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir nibabel pydicom matplotlib pillow && \
-    pip install --no-cache-dir med2image
+RUN apt-get update && apt-get install -y python python-pip
 RUN pip install flask
-COPY app.py
+COPY app.py /opt/
 ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8000
-
-FROM python:3
-
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir nibabel pydicom matplotlib pillow && \
-    pip install --no-cache-dir med2image
-
-CMD ["cat", "/etc/os-release"]
